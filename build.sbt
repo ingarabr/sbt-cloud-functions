@@ -1,7 +1,7 @@
 inThisBuild(
   Seq(
     organization := "com.github.ingarabr",
-    version := "0.0.1-SNAPSHOT"
+    version := "0.0.1-SNAPSHOT-1"
   )
 )
 

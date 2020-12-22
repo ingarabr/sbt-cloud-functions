@@ -25,8 +25,15 @@ object GcpFunctionsPlugin extends AutoPlugin {
               s" --port ${gcpFunctionPort.value}" +
               s" --target ${gcpFunctionClass.value}"
           )
-
-      }.value
+      }.value,
+      gcpFunctionDeployConfiguration := DeployConfiguration.empty,
+      gcpFunctionDeploy :=
+        DeployFunctionHelper.deployUsingJar(
+          gcpFunctionDeployConfiguration.value,
+          gcpFunctionClass.value,
+          gcpFunctionJar.value,
+          (msg: String) => sLog.value.info(msg)
+        )
     )
 
 }

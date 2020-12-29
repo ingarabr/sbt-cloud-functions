@@ -1,9 +1,5 @@
-inThisBuild(
-  Seq(
-    organization := "com.github.ingarabr",
-    version := "0.0.1-SNAPSHOT-1"
-  )
-)
+ThisBuild / organization := "com.github.ingarabr"
+ThisBuild / version := Version.versionFromGit
 
 lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)

@@ -1,20 +1,23 @@
-# sbt-gcp-function
-Make it simple to test and deploy a GCP function by leveraging the sbt-plugin ecosystem.
+# sbt-cloud-functions
+
+Make it simple to test and deploy a Google Cloud Functions by leveraging the sbt-plugin ecosystem.
 
 ## Usage
 
 Add the plugin to `projects/plugins.sbt`
 
 ```
-addSbtPlugin("com.github.ingarabr" % "sbt-gcp-functions" % "<version>>")
+resolvers += Resolver.bintrayRepo("ingarabr", "oss")
+
+addSbtPlugin("com.github.ingarabr" % "sbt-cloud-functions" % "<version>")
 ```
 
 The plugin has the following tasks:
 
 | Task | Description | 
 |---|---|
-| `gcpFunctionRunLocally` | Run the function locally. The default port is 8080 | 
-| `gcpFunctionDeploy` | Deploy the function to the configured environment. | 
+| `cloudFunctionRunLocally` | Run the function locally. The default port is 8080 | 
+| `cloudFunctionDeploy` | Deploy the function to the configured environment. | 
 
 
 ## Configuration
@@ -24,16 +27,16 @@ The plugin requires some information about the target environment and the functi
 The example below depends on [sbt-assembly]. You can change that to any other sbt-plugin that can create a fat-jar. 
 
 ```sbt
-enablePlugins(GcpFunctionsPlugin)
+enablePlugins(CloudFunctionsPlugin)
 
 // The function class name.
-gcpFunctionClass := "my.package.HelloFunction"
+cloudFunctionClass := "my.package.HelloFunction"
 
 // The jar to deploy. Example using sbt-assembly
-gcpFunctionJar := assembly.value
+cloudFunctionJar := assembly.value
 
 // Environment deployment configuration.
-gcpFunctionDeployConfiguration := DeployConfiguration(
+cloudFunctionDeployConfiguration := DeployConfiguration(
   functionName = "my-function",
   gcpProject = "my-google-project",
   gcpLocation = "us-central1",
@@ -44,12 +47,12 @@ gcpFunctionDeployConfiguration := DeployConfiguration(
 )
 
 // The port used when testing the function locally.
-gcpFunctionPort := 8080 // default value
+cloudFunctionPort := 8080 // default value
 
 // Additional config. Usually not needed to change.
 // Specify versions.
-// gcpFunctionInvokerVersion := ""
-// gcpFunctionFrameworkApiVersion "= ""
+// cloudFunctionInvokerVersion := ""
+// cloudFunctionFrameworkApiVersion "= ""
 ```
 
 ## Limitations and improvements

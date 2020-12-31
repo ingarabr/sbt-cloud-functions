@@ -1,7 +1,7 @@
 import scala.sys.process.{Process, ProcessLogger}
 import scala.util.{Failure, Success, Try}
 
-object Version {
+object GitTagVersion {
 
   private def runCmd(cmd: String, args: String*): Try[String] = {
     val result = List.newBuilder[Either[String, String]]

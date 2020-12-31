@@ -4,29 +4,29 @@ import sbt.{settingKey, taskKey}
 
 import java.io.File
 
-trait GcpFunctionKeys {
-  val gcpFunctionClass =
+trait CloudFunctionKeys {
+  val cloudFunctionClass =
     taskKey[String]("The function class to use.")
 
-  val gcpFunctionPort =
+  val cloudFunctionPort =
     taskKey[Int]("The http port to server the function on.")
 
-  val gcpFunctionRunLocally =
+  val cloudFunctionRunLocally =
     taskKey[Unit]("Run a cloud function locally")
 
-  val gcpFunctionInvokerVersion =
+  val cloudFunctionInvokerVersion =
     settingKey[String]("java-function-invoker version")
 
-  val gcpFunctionFrameworkApiVersion =
+  val cloudFunctionFrameworkApiVersion =
     settingKey[String]("functions-framework-api version")
 
-  val gcpFunctionDeployConfiguration =
+  val cloudFunctionDeployConfiguration =
     settingKey[DeployConfiguration]("Deploy configuration")
 
-  val gcpFunctionJar =
+  val cloudFunctionJar =
     taskKey[File]("The jar file to deploy.")
 
-  val gcpFunctionDeploy =
+  val cloudFunctionDeploy =
     taskKey[Unit](
       """|Deploy function.
          |Uses default authentication mechanism defined by the Google java lib.""".stripMargin

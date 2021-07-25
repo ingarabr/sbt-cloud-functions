@@ -18,7 +18,7 @@ object CloudFunctionsPlugin extends AutoPlugin {
         "com.google.cloud.functions" % "functions-framework-api" % cloudFunctionFrameworkApiVersion.value % Provided,
         "com.google.cloud.functions.invoker" % "java-function-invoker" % cloudFunctionInvokerVersion.value % Test
       ),
-      fork in (Test, cloudFunctionRunLocally / run) := true,
+      Test / cloudFunctionRunLocally / run / fork := true,
       cloudFunctionRunLocally := Def.taskDyn {
         (Test / runMain)
           .toTask(

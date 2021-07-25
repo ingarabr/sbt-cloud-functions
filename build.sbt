@@ -3,7 +3,7 @@ inThisBuild(
   Seq(
     organization := "com.github.ingarabr",
     scalaVersion := V.defaultScala,
-    homepage := Some(url("https://github.com/ingarabr/http4s-cloud-functions")),
+    homepage := Some(url("https://github.com/ingarabr/sbt-cloud-functions")),
     licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
     developers := List(
       Developer(

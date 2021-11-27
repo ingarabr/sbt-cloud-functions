@@ -22,16 +22,20 @@ object DeployFunctionHelper {
 
     def toArg(b: Boolean, arg: String) = if (b) List(arg) else Nil
 
-    val base = List("functions", "deploy", config.functionName)
+    val release = config.releaseChannel.cliName.toList
+    val base = release ++ List("functions", "deploy", config.functionName)
+
     val args = Map(
       "--entry-point" -> classFile,
       "--source" -> tmpDir.toString,
       "--runtime" -> config.runtime,
       "--project" -> config.gcpProject,
       "--memory" -> s"${config.memoryMb}MB"
-    ).toList.flatMap(e => List(e._1, e._2)) ++
+    ).toList
+      .flatMap(e => List(e._1, e._2)) ++
       toArg(config.triggerHttp, "--trigger-http") ++
-      toArg(config.allowUnauthenticated, "--allow-unauthenticated")
+      toArg(config.allowUnauthenticated, "--allow-unauthenticated") ++
+      config.extraArgs
 
     infoLog(s"Calling: gcloud ${(base ++ args).mkString(" ")}")
 

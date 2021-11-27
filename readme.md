@@ -6,9 +6,7 @@ Make it simple to test and deploy a Google Cloud Functions by leveraging the sbt
 
 Add the plugin to `projects/plugins.sbt`
 
-```
-resolvers += Resolver.bintrayRepo("ingarabr", "oss")
-
+``` 
 addSbtPlugin("com.github.ingarabr" % "sbt-cloud-functions" % "<version>")
 ```
 
@@ -43,7 +41,9 @@ cloudFunctionDeployConfiguration := DeployConfiguration(
   memoryMb = 512, // default value
   triggerHttp = true, // default value
   allowUnauthenticated = false, // default value
-  runtime = "java11" // default value
+  runtime = "java11", // default value
+  extraArgs = List.empty, // default value
+  releaseChannel = ReleaseChannel.GA  // default value
 )
 
 // The port used when testing the function locally.

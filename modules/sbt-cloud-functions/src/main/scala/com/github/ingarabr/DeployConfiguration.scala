@@ -7,7 +7,8 @@ case class DeployConfiguration(
     memoryMb: Int = 512,
     triggerHttp: Boolean = true,
     allowUnauthenticated: Boolean = false,
-    runtime: String = "java11"
+    runtime: String = "java11",
+    extraArgs: List[String] = List.empty
 )
 
 object DeployConfiguration {

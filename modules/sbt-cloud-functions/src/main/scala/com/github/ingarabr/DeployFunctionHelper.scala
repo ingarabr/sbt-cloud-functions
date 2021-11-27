@@ -29,9 +29,11 @@ object DeployFunctionHelper {
       "--runtime" -> config.runtime,
       "--project" -> config.gcpProject,
       "--memory" -> s"${config.memoryMb}MB"
-    ).toList.flatMap(e => List(e._1, e._2)) ++
+    ).toList
+      .flatMap(e => List(e._1, e._2)) ++
       toArg(config.triggerHttp, "--trigger-http") ++
-      toArg(config.allowUnauthenticated, "--allow-unauthenticated")
+      toArg(config.allowUnauthenticated, "--allow-unauthenticated") ++
+      config.extraArgs
 
     infoLog(s"Calling: gcloud ${(base ++ args).mkString(" ")}")
 

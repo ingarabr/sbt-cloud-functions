@@ -6,9 +6,7 @@ Make it simple to test and deploy a Google Cloud Functions by leveraging the sbt
 
 Add the plugin to `projects/plugins.sbt`
 
-```
-resolvers += Resolver.bintrayRepo("ingarabr", "oss")
-
+``` 
 addSbtPlugin("com.github.ingarabr" % "sbt-cloud-functions" % "<version>")
 ```
 

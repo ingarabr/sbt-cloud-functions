@@ -44,7 +44,8 @@ cloudFunctionDeployConfiguration := DeployConfiguration(
   triggerHttp = true, // default value
   allowUnauthenticated = false, // default value
   runtime = "java11", // default value
-  extraArgs = List.empty // default value
+  extraArgs = List.empty, // default value
+  releaseChannel = ReleaseChannel.GA  // default value
 )
 
 // The port used when testing the function locally.

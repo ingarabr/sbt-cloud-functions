@@ -22,7 +22,9 @@ object DeployFunctionHelper {
 
     def toArg(b: Boolean, arg: String) = if (b) List(arg) else Nil
 
-    val base = List("functions", "deploy", config.functionName)
+    val release = config.releaseChannel.cliName.toList
+    val base = release ++ List("functions", "deploy", config.functionName)
+
     val args = Map(
       "--entry-point" -> classFile,
       "--source" -> tmpDir.toString,

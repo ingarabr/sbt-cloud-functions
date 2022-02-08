@@ -29,6 +29,7 @@ object DeployFunctionHelper {
       "--entry-point" -> classFile,
       "--source" -> tmpDir.toString,
       "--runtime" -> config.runtime,
+      "--region" -> config.gcpLocation,
       "--project" -> config.gcpProject,
       "--memory" -> s"${config.memoryMb}MB"
     ).toList
